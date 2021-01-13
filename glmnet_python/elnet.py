@@ -15,7 +15,7 @@ def elnet(x, is_sparse, irs, pcs, y, weights, offset, gtype, parm, lempty,
 
     # load shared fortran library
     glmlib = loadGlmLib() 
-    
+    glmlib.chg_dev_max_(ctypes.byref(ctypes.c_double(1e10)))
     # pre-process data     
     ybar = scipy.dot(scipy.transpose(y), weights)
     ybar = ybar/sum(weights)
